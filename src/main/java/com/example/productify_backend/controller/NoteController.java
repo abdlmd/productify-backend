@@ -22,4 +22,17 @@ public class NoteController {
             return new ResponseEntity<>("Error creating a note",HttpStatus.BAD_REQUEST);
 
     }
+    @GetMapping("/note")
+    public ResponseEntity<List<Note>> getAllNotes(){
+        return new ResponseEntity<>(service.getAllNotes(),HttpStatus.OK);
+    }
+    @PutMapping("/note")
+    public ResponseEntity<Note> updateNote(@RequestBody Note note){
+        return new ResponseEntity<>(service.updateNote(note),HttpStatus.OK);
+    }
+    @DeleteMapping("/note/{id}")
+    public ResponseEntity<String> deleteNote(@PathVariable int id){
+        service.deleteNote(id);
+        return new ResponseEntity<>("Note deleted",HttpStatus.OK);
+    }
 }
