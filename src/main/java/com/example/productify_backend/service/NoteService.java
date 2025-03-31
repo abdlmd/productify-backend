@@ -26,4 +26,8 @@ public class NoteService {
     public void deleteNote(int id) {
         repo.deleteById(id);
     }
+
+    public Note getNote(int id) {
+        return repo.findById(id).orElse(null);
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class NoteController {
     @Autowired
@@ -25,6 +26,10 @@ public class NoteController {
     @GetMapping("/note")
     public ResponseEntity<List<Note>> getAllNotes(){
         return new ResponseEntity<>(service.getAllNotes(),HttpStatus.OK);
+    }
+    @GetMapping("/note/{id}")
+    public ResponseEntity<Note> getNote(@PathVariable int id){
+        return new ResponseEntity<>(service.getNote(id),HttpStatus.OK);
     }
     @PutMapping("/note")
     public ResponseEntity<Note> updateNote(@RequestBody Note note){
