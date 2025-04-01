@@ -23,10 +23,15 @@ public class TaskController {
     public ResponseEntity<List<Task>> getAllTasks(){
         return new ResponseEntity<>(service.getAllTasks(), HttpStatus.OK);
     }
+    @PutMapping("/tasks/{id}")
+    public ResponseEntity<?> updateCompleteStatus(@PathVariable int id){
+        return new ResponseEntity<>(service.updateCompleteStatus(id),HttpStatus.OK);
+    }
+
+
     @DeleteMapping("/tasks/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable int id){
         service.deleteTask(id);
         return new ResponseEntity<>("Task Deleted",HttpStatus.OK);
-
     }
 }

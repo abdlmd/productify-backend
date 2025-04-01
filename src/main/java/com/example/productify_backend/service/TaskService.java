@@ -24,4 +24,10 @@ public class TaskService {
     public void deleteTask(int id){
        repo.deleteById(id);
     }
+
+    public Object updateCompleteStatus(int id) {
+        Task Task1 = repo.findById(id).orElse(null);
+        Task1.setCompleted(true);
+        return repo.save(Task1);
+    }
 }
