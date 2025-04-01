@@ -24,10 +24,12 @@ public class HabitService {
         repo.deleteById(id);
     }
 
-    public Habit updateStreak(Habit habit) {
-        habit.setStreakDays(habit.getStreakDays()+1);
-        repo.save(habit);
-        return habit;
+    public Habit updateStreak(int id) {
+        Habit h1= repo.findById(id).orElse(null);
+        h1.setStreakDays(h1.getStreakDays()+1);
+        h1.setCompletedToday(true);
+        repo.save(h1);
+        return h1;
 
     }
 }

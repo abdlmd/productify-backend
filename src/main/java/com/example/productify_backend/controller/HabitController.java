@@ -24,9 +24,9 @@ public class HabitController {
     public ResponseEntity<List<Habit>> getAllHabits(){
         return new ResponseEntity<>(service.getAllHabits(),HttpStatus.OK);
     }
-    @PutMapping("/habit")
-    public ResponseEntity<Habit> updateStreak(@RequestBody Habit habit){
-        return new ResponseEntity<>(service.updateStreak(habit),HttpStatus.OK);
+    @PutMapping("/habit/{id}")
+    public ResponseEntity<Habit> updateStreak(@PathVariable int id){
+        return new ResponseEntity<>(service.updateStreak(id),HttpStatus.OK);
     }
     @DeleteMapping("/habit/{id}")
     public ResponseEntity<String> deleteHabit(@PathVariable int id){
